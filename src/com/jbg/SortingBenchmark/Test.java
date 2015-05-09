@@ -127,14 +127,17 @@ public class Test {
 			
 			//Get size of the biggest list
 			int maxResults = 0;
+                        int maxIndex = 0;
 			for(List<Results> r : results){
-				if(r.size() > maxResults)
+				if(r.size() > maxResults){
 					maxResults = r.size();
+                                        maxIndex = results.indexOf(r);
+                                }
 			}
 			
 			//Body
 			for(int i=0 ; i < maxResults ; ++i){
-				writer.write(Integer.toString(results.get(0).get(i).nElem));
+				writer.write(Integer.toString(results.get(maxIndex).get(i).nElem));
 				
 				for(List<Results> r : results){
 					writer.write(";");
@@ -186,10 +189,10 @@ class Opts{
 	public int nRuns = 100;
 	
 	@Parameter (names = {"-mt"}, description = "Maximum execution time")
-	public long maxTime = 10000;
+	public long maxTime = -1;
 	
 	@Parameter (names = {"-me"}, description = "Maximum number of elements")
-	public int maxElem = 10;
+	public int maxElem = 50;
 	
 	@Parameter (names = {"-s"}, description = "Step of number of elements between tests")
 	public int step = 1;

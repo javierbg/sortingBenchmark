@@ -17,7 +17,7 @@ public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 		int middle = size / 2;
 		List<T> left = new ArrayList<>(middle);
 		List<T> right = new ArrayList<>(middle +1);
-		List<T> result = new ArrayList<>(size);
+		List<T> result;
 		
 		if(array.size() <= 1)
 			return array;
